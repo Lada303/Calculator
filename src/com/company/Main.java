@@ -34,10 +34,8 @@ public class Main {
             if (IndexSymbol == 0 || IndexSymbol == InputString.length()-1)
                {System.out.println("Введено только 1 число до или после арифметического символа");continue;}
 
-            // Определяем Num1 и Num2, вид числа и разрешенные символы, отрабатываем исключения.
             int Num1, Num2;
             int countLength=1;
-
             // Ищем арабские цифры
             char[] ArrArab = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
             for (int i =0; i < InputString.length(); i++ ) {
@@ -76,7 +74,6 @@ public class Main {
                     System.out.println("Ошибка при введении римских чисел");
                     continue;
                 }
-
                 // Производим арифметические действия и переводим в римские
                 ArithmeticOperation Operation = new ArithmeticOperation( InputString.charAt(IndexSymbol), Num1, Num2);
                 if (Operation.result() <= 0) System.out.println("Результат меньше или равен нулю");
