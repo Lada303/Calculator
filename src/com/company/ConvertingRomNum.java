@@ -57,7 +57,6 @@ public class ConvertingRomNum {
    static int RecognizeRom (String RN){
         int NumReturn=0, count=0;
         int countV=0, countI=0;
-
         RomNumber[] AllRom = RomNumber.values();
         int [] anRom = new int[RN.length()];
         for (int i=0; i<RN.length(); i++){
