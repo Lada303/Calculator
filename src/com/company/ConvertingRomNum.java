@@ -55,23 +55,32 @@ public class ConvertingRomNum {
   }
 
    static int RecognizeRom (String RN){
-        int NumReturn, count=0;
+        int NumReturn=0, count=0;
+        int countV=0, countI=0;
+
         RomNumber[] AllRom = RomNumber.values();
         int [] anRom = new int[RN.length()];
         for (int i=0; i<RN.length(); i++){
-            for (RomNumber AllRomJ : AllRom) {
+           for (RomNumber AllRomJ : AllRom) {
                 if (AllRomJ.name().equalsIgnoreCase(RN.substring(i,i+1))) {
                     anRom[i] = AllRomJ.getEqv();
                     count++;
+                    if (anRom[i] == 1) countI++;  if (countI > 3) return (0);
+                    if (anRom[i] == 5) countV++;  if (countV > 1) return (0);
+                    if (i==0)
+                        if (anRom[i] !=0) NumReturn=anRom[i];
+                        else return 0;
+                    else
+                       if (anRom[i-1] >= anRom[i])NumReturn=NumReturn+anRom[i];
+                       else {
+                           if (NumReturn>1) return 0;
+                           NumReturn = anRom[i]-NumReturn;
+                           if (count == RN.length()) return NumReturn;
+                           else return 0;
+                       }
                 }
-            }
-        }
-        if (count ==0 || count != RN.length()) return (0);
-
-        NumReturn=anRom[0];
-        for (int i=1; i<anRom.length; i++){
-            if (anRom[i-1] >= anRom[i]) {NumReturn=NumReturn+anRom[i];}
-            else {NumReturn = anRom[i]-NumReturn;}
+           }
+            if (count ==0 || count != i+1) return (0);
         }
         return NumReturn;
   }

@@ -10,7 +10,6 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
         String InputString;
-       // char[] StartArray;
         while ( true ) {
             System.out.print("Input: ");
             InputString = input.nextLine();
@@ -70,11 +69,11 @@ public class Main {
                 Num1 = ConvertingRomNum.RecognizeRom(InputString.substring(0, IndexSymbol));
                 Num2 = ConvertingRomNum.RecognizeRom(InputString.substring(IndexSymbol+1));
                 if (Num1 > 10 || Num2 > 10) {
-                    System.out.println("Введено РИМСКОЕ число более 10");
+                    System.out.println("Введено римское число более 10");
                     continue;
                 }
                 if (Num1 == 0 || Num2 == 0) {
-                    System.out.println("Нет правильных римских знаков или введены лишние знаки");
+                    System.out.println("Ошибка при введении римских чисел");
                     continue;
                 }
 
